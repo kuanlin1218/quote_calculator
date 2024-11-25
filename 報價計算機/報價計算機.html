@@ -108,16 +108,6 @@
             justify-content: center;
         }
 
-        /* 總計格式 */
-        .label-totle {
-            background-color: #eb37ee; 
-            color: #ffffff;
-            width: 80px;
-            align-items: center;
-            justify-content: center;
-            font-size: 18px !important; /* 使用 !important 確保優先 */
-        }
-
         /* 表單元素樣式 */
         .form-control,
         .form-select {
@@ -147,23 +137,14 @@
         margin: 0; /* 移除內邊距 */
         }
 
-        .btn-warning{
-            width: 120px;
-            background: rgb(138, 138, 138);
-            border: 4px solid #bebebe;
+        .btn-secondary{
+            width: 100%;
             border-radius: 10px;
-            color: #fbfbfb;
-            font-weight:800; /*字體粗細100-900*/
-            letter-spacing: 3px; /*文字間距*/
+            font-weight:600; /*字體粗細100-900*/
+            letter-spacing: 10px; /*文字間距*/
             font-size: 18px !important; /* 使用 !important 確保優先 */
         }
 
-        .input-totle{
-            color: #ab10c3;
-            font-weight:600; /*字體粗細100-900*/
-            font-size: 16px !important; /* 使用 !important 確保優先 */
-            pointer-events: none; /* 禁止點擊 */
-        }
 
         .no-input{
             background: rgba(216, 201, 83, 0.242);
@@ -196,6 +177,44 @@
             align-items: center;
             justify-content: center;
         } 
+
+        /* 總計格式 */
+        .label-totle {
+            background-color: #eb37ee; 
+            color: #ffffff;
+            width: 80px;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px !important; /* 使用 !important 確保優先 */
+            width: 16%;
+        }
+
+        .input-totle{
+            color: #eb37ee;
+            background-color: #e0f9fa; 
+            font-weight:600; /*字體粗細100-900*/
+            font-size: 20px !important; /* 使用 !important 確保優先 */
+            pointer-events: none; /* 禁止點擊 */
+            width: 30%;
+        }
+
+        .input-M{
+            color:  #5d09b0;
+            background-color: #e0f9fa; 
+            font-weight:600; /*字體粗細100-900*/
+            font-size: 20px !important; /* 使用 !important 確保優先 */
+            pointer-events: none; /* 禁止點擊 */
+            width: 40%;
+        }
+
+        .label-M {
+            background-color: #5d09b0; 
+            color: #ffffff;
+            width: 15%;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px !important; /* 使用 !important 確保優先 */
+        }
 
 
     </style>
@@ -236,7 +255,7 @@
             <input type="number" class="form-control no-input custom-w" id="料價a" aria-describedby="inputGroup-sizing-sm" readonly>
             <span class="input-group-text label-unit">元</span>
             <input type="number" class="form-control custom-s" id="料價b" value="1" min="0" oninput="換料價()">
-            <select class="form-select form-select-sm" id="料價c" style="font-size: 12px;" onchange="換料價()">
+            <select class="form-select form-select-sm" id="料價c" style="font-size: 12px;" onchange="換料價();changeFontColor(this)">
                 <option value="1">只</option>
                 <option value="2">KG</option>
             </select>
@@ -250,7 +269,7 @@
             <input type="number" inputmode="decimal" class="form-control custom-w" id="成型a" aria-describedby="inputGroup-sizing-sm" oninput="updateCalculation('成型')" min="0" placeholder="輸入" onkeydown="moveToNextInput(event, '車修a')">
             <span class="input-group-text label-unit">元</span>
             <input type="number" inputmode="decimal" class="form-control custom-s" id="成型b" value="1" min="0" oninput="updateCalculation('成型')">
-            <select class="form-select form-select-sm" id="成型c" style="font-size: 12px;" onchange="updateCalculation('成型')">
+            <select class="form-select form-select-sm" id="成型c" style="font-size: 12px;" onchange="updateCalculation('成型');changeFontColor(this)">
                 <option value="1">只</option>
                 <option value="2">KG</option>
             </select>
@@ -264,7 +283,7 @@
             <input type="number" inputmode="decimal" class="form-control custom-w" id="車修a" aria-describedby="inputGroup-sizing-sm" oninput="updateCalculation('車修')" min="0" placeholder="輸入" onkeydown="moveToNextInput(event, '攻牙a')">
             <span class="input-group-text label-unit">元</span>
             <input type="number" inputmode="decimal" class="form-control custom-s" id="車修b" value="1" min="0" oninput="updateCalculation('車修')">
-            <select class="form-select form-select-sm" id="車修c" style="font-size: 12px;" onchange="updateCalculation('車修')">
+            <select class="form-select form-select-sm" id="車修c" style="font-size: 12px;" onchange="updateCalculation('車修');changeFontColor(this)">
                 <option value="1">只</option>
                 <option value="2">KG</option>
             </select>
@@ -278,7 +297,7 @@
             <input type="number" inputmode="decimal" class="form-control custom-w" id="攻牙a" aria-describedby="inputGroup-sizing-sm" oninput="updateCalculation('攻牙')" min="0" placeholder="輸入" onkeydown="moveToNextInput(event, '搓牙a')">
             <span class="input-group-text label-unit">元</span>
             <input type="number" inputmode="decimal" class="form-control custom-s" id="攻牙b" value="1" min="0" oninput="updateCalculation('攻牙')">
-            <select class="form-select form-select-sm" id="攻牙c" style="font-size: 12px;" onchange="updateCalculation('攻牙')">
+            <select class="form-select form-select-sm" id="攻牙c" style="font-size: 12px;" onchange="updateCalculation('攻牙');changeFontColor(this)">
                 <option value="1">只</option>
                 <option value="2">KG</option>
             </select>
@@ -292,7 +311,7 @@
             <input type="number" inputmode="decimal" class="form-control custom-w" id="搓牙a" aria-describedby="inputGroup-sizing-sm" oninput="updateCalculation('搓牙')" min="0" placeholder="輸入" onkeydown="moveToNextInput(event, '輾齒a')">
             <span class="input-group-text label-unit">元</span>
             <input type="number" inputmode="decimal" class="form-control custom-s" id="搓牙b" value="1" min="0" oninput="updateCalculation('搓牙')">
-            <select class="form-select form-select-sm" id="搓牙c" style="font-size: 12px;" onchange="updateCalculation('搓牙')">
+            <select class="form-select form-select-sm" id="搓牙c" style="font-size: 12px;" onchange="updateCalculation('搓牙');changeFontColor(this)">
                 <option value="1">只</option>
                 <option value="2">KG</option>
             </select>
@@ -306,7 +325,7 @@
             <input type="number" inputmode="decimal" class="form-control custom-w" id="輾齒a" aria-describedby="inputGroup-sizing-sm" oninput="updateCalculation('輾齒')" min="0" placeholder="輸入" onkeydown="moveToNextInput(event, '銑削a')">
             <span class="input-group-text label-unit">元</span>
             <input type="number" inputmode="decimal" class="form-control custom-s" id="輾齒b" value="1" min="0" oninput="updateCalculation('輾齒')">
-            <select class="form-select form-select-sm" id="輾齒c" style="font-size: 12px;" onchange="updateCalculation('輾齒')">
+            <select class="form-select form-select-sm" id="輾齒c" style="font-size: 12px;" onchange="updateCalculation('輾齒');changeFontColor(this)">
                 <option value="1">只</option>
                 <option value="2">KG</option>
             </select>
@@ -320,7 +339,7 @@
             <input type="number" inputmode="decimal" class="form-control custom-w" id="銑削a" aria-describedby="inputGroup-sizing-sm" oninput="updateCalculation('銑削')" min="0" placeholder="輸入" onkeydown="moveToNextInput(event, '熱處理a')">
             <span class="input-group-text label-unit">元</span>
             <input type="number" inputmode="decimal" class="form-control custom-s" id="銑削b" value="1" min="0" oninput="updateCalculation('銑削')">
-            <select class="form-select form-select-sm" id="銑削c" style="font-size: 12px;" onchange="updateCalculation('銑削')">
+            <select class="form-select form-select-sm" id="銑削c" style="font-size: 12px;" onchange="updateCalculation('銑削');changeFontColor(this)">
                 <option value="1">只</option>
                 <option value="2">KG</option>
             </select>
@@ -334,7 +353,7 @@
             <input type="number" inputmode="decimal" class="form-control custom-w" id="熱處理a" aria-describedby="inputGroup-sizing-sm" oninput="updateCalculation('熱處理')" min="0" placeholder="輸入" onkeydown="moveToNextInput(event, '電鍍a')">
             <span class="input-group-text label-unit">元</span>
             <input type="number" inputmode="decimal" class="form-control custom-s" id="熱處理b" value="1" min="0" oninput="updateCalculation('熱處理')">
-            <select class="form-select form-select-sm" id="熱處理c" style="font-size: 12px;" onchange="updateCalculation('熱處理')">
+            <select class="form-select form-select-sm" id="熱處理c" style="font-size: 12px;" onchange="updateCalculation('熱處理');changeFontColor(this)">
                 <option value="1">只</option>
                 <option value="2" selected>KG</option>
             </select>
@@ -348,7 +367,7 @@
             <input type="number" inputmode="decimal" class="form-control custom-w" id="電鍍a" aria-describedby="inputGroup-sizing-sm" oninput="updateCalculation('電鍍')" min="0" placeholder="輸入" onkeydown="moveToNextInput(event, '耐落a')">
             <span class="input-group-text label-unit">元</span>
             <input type="number" inputmode="decimal" class="form-control custom-s" id="電鍍b" value="1" min="0" oninput="updateCalculation('電鍍')">
-            <select class="form-select form-select-sm" id="電鍍c" style="font-size: 12px;" onchange="updateCalculation('電鍍')">
+            <select class="form-select form-select-sm" id="電鍍c" style="font-size: 12px;" onchange="updateCalculation('電鍍');changeFontColor(this)">
                 <option value="1">只</option>
                 <option value="2" selected>KG</option>
             </select>
@@ -362,7 +381,7 @@
             <input type="number" inputmode="decimal" class="form-control custom-w" id="耐落a" aria-describedby="inputGroup-sizing-sm" oninput="updateCalculation('耐落')" min="0" placeholder="輸入" onkeydown="moveToNextInput(event, '清洗a')">
             <span class="input-group-text label-unit">元</span>
             <input type="number" inputmode="decimal" class="form-control custom-s" id="耐落b" value="1" min="0" oninput="updateCalculation('耐落')">
-            <select class="form-select form-select-sm" id="耐落c" style="font-size: 12px;" onchange="updateCalculation('耐落')">
+            <select class="form-select form-select-sm" id="耐落c" style="font-size: 12px;" onchange="updateCalculation('耐落');changeFontColor(this)">
                 <option value="1">只</option>
                 <option value="2">KG</option>
             </select>
@@ -376,7 +395,7 @@
             <input type="number" inputmode="decimal" class="form-control custom-w" id="清洗a" aria-describedby="inputGroup-sizing-sm" oninput="updateCalculation('清洗')" min="0" placeholder="輸入" onkeydown="moveToNextInput(event, '篩選a')">
             <span class="input-group-text label-unit">元</span>
             <input type="number" inputmode="decimal" class="form-control custom-s" id="清洗b" value="1" min="0" oninput="updateCalculation('清洗')">
-            <select class="form-select form-select-sm" id="清洗c" style="font-size: 12px;" onchange="updateCalculation('清洗')">
+            <select class="form-select form-select-sm" id="清洗c" style="font-size: 12px;" onchange="updateCalculation('清洗');changeFontColor(this)">
                 <option value="1">只</option>
                 <option value="2" selected>KG</option>
             </select>
@@ -390,7 +409,7 @@
             <input type="number" inputmode="decimal" class="form-control custom-w" id="篩選a" aria-describedby="inputGroup-sizing-sm" oninput="updateCalculation('篩選')" min="0" placeholder="輸入" onkeydown="moveToNextInput(event, '包裝a')">
             <span class="input-group-text label-unit">元</span>
             <input type="number" inputmode="decimal" class="form-control custom-s" id="篩選b" value="1" min="0" oninput="updateCalculation('篩選')">
-            <select class="form-select form-select-sm" id="篩選c" style="font-size: 12px;" onchange="updateCalculation('篩選')">
+            <select class="form-select form-select-sm" id="篩選c" style="font-size: 12px;" onchange="updateCalculation('篩選');changeFontColor(this)">
                 <option value="1">只</option>
                 <option value="2">KG</option>
             </select>
@@ -404,7 +423,7 @@
             <input type="number" inputmode="decimal" class="form-control custom-w" id="包裝a" aria-describedby="inputGroup-sizing-sm" oninput="updateCalculation('包裝')" min="0" placeholder="輸入" onkeydown="moveToNextInput(event, '總計')">
             <span class="input-group-text label-unit">元</span>
             <input type="number" inputmode="decimal" class="form-control custom-s" id="包裝b" value="1" min="0" oninput="updateCalculation('包裝')">
-            <select class="form-select form-select-sm" id="包裝c" style="font-size: 12px;" onchange="updateCalculation('包裝')">
+            <select class="form-select form-select-sm" id="包裝c" style="font-size: 12px;" onchange="updateCalculation('包裝');changeFontColor(this)">
                 <option value="1">只</option>
                 <option value="2" selected>KG</option>
             </select>
@@ -415,20 +434,33 @@
         <hr>
 
         <!-- 總計 -->
-        <div class="input-group input-group-sm my-1 mb-5">
+        <div class="input-group input-group-sm my-1">
             <span class="input-group-text label-totle" id="inputGroup-sizing-sm">總計</span>
             <input type="number" class="form-control input-totle" id="總計" aria-describedby="inputGroup-sizing-sm" readonly>
             <span class="input-group-text label-totle">元/1只</span>
-            <button type="button" class="btn btn-warning" id="歸零" onclick="resetPage()">
-                歸零
-            </button>
+            <input type="number" class="form-control input-M" id="M" aria-describedby="inputGroup-sizing-sm" readonly>
+            <span class="input-group-text label-M">M</span>
+            
         </div>
 
+        <button type="button" class="btn btn-secondary mt-2 mb-4" id="歸零" onclick="歸零()">重新計算</button>
 
     </div>
 </body>
 
     <script>
+        // 在頁面加載完成後設置
+        window.onload = function() {
+            focusToFirstInput();
+            // 批量處理需要改變顏色的select元素
+            const selectIds = ['熱處理c', '電鍍c', '清洗c', '包裝c'];
+            selectIds.forEach(id => {
+                const selectElement = document.getElementById(id);
+                changeFontColor(selectElement);
+            });
+        }
+        
+        
         //數值運算
         function 單位重換算() {
             // 取得值
@@ -459,7 +491,7 @@
             var ans1 = 0; // 初始化結果
             var ans = 0; // 初始化結果
             ans1 = t / n
-            document.getElementById('料價a').value= ans1.toFixed(2);
+            document.getElementById('料價a').value= ans1.toFixed(3);
             // 根據單位計算
             if (c === "1") {
                 ans = ans1 / b;
@@ -467,7 +499,7 @@
                 ans = ans1 / n;
             }
             // 顯示結果
-            document.getElementById('料價d').value= ans.toFixed(2);
+            document.getElementById('料價d').value= ans.toFixed(3);
             // 更新總和
             計算總合();
         }
@@ -509,19 +541,28 @@
         function 計算總合() {
             const modules = ['料價','成型', '車修', '攻牙', '搓牙', '輾齒', '銑削', '熱處理', '電鍍', '耐落', '清洗', '篩選', '包裝'];
             let total = 0;
+            let mt = 0;
 
             modules.forEach(module => {
                 const value = parseFloat(document.getElementById(`${module}d`)?.value || 0);
                 total += value;
             });
 
+            mt=total*1000
+
+            if (total === 0 || mt === 0 ) {
+                return;
+            }
+
             // 顯示總和
             document.getElementById('總計').value = total.toFixed(2);
+            
+            document.getElementById('M').value = mt.toFixed(0);
         }
 
         // 歸零
         function 歸零() {
-            const modules = ['料價', '成型', '車修', '攻牙', '搓牙', '輾齒', '銑削', '熱處理', '電鍍', '耐落', '清洗', '篩選', '包裝'];
+            const modules = ['料價', '成型', '車修', '攻牙', '搓牙', '輾齒', '銑削', '熱處理', '電鍍', '耐落', '清洗', '篩選', '包裝','總計','M'];
             // 獲取所有頁面上的 input 元素
             const inputs = document.querySelectorAll('input');
             inputs.forEach(input => {
@@ -542,10 +583,6 @@
             計算總合();
             
         }
-        // 在頁面加載完成後設置焦點
-        window.onload = function() {
-            focusToFirstInput();
-        }
 
         function resetPage() {
             window.location.reload();  // 重新加載頁面
@@ -563,6 +600,18 @@
         function focusToFirstInput() {
             document.getElementById('單位重g').focus();
         }
+
+        //select選到kg時，改變字體顏色
+        function changeFontColor(selectElement) {
+        // 檢查選中的值
+        if (selectElement.value === "2") {
+            // 當值為2時，改變字體顏色
+            selectElement.style.color = "red"; // 可替換為其他顏色
+        } else {
+            // 還原字體顏色
+            selectElement.style.color = "black";
+        }
+    }
 
 
     </script>
