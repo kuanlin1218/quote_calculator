@@ -185,22 +185,27 @@
             padding-right: 0% !important;  /* 給箭頭留出空間 */
         }
 
-
-
+        img { 
+            width: 50px; 
+            height: auto;
+            align-items: center;
+            justify-content: center;
+        } 
 
 
     </style>
-
 <body>
     <div class="container">
+
         <h4>
+            <img src="logo.png" class="img-fluid" />
             詮栩報價計算機
         </h4>
         
         <!-- 單位重 -->
         <div class="input-group input-group-sm my-1">
             <span class="input-group-text ic_1" id="inputGroup-sizing-sm">單位重</span>
-            <input type="number" inputmode="decimal" id="單位重g" class="form-control" min="0" placeholder="輸入" aria-describedby="inputGroup-sizing-sm" oninput="單位重換算()">
+            <input type="number" inputmode="decimal" id="單位重g" class="form-control" min="0" placeholder="輸入" aria-describedby="inputGroup-sizing-sm" oninput="單位重換算()" onkeydown="moveToNextInput(event, '線材價格')">
             <span class="input-group-text ic_1" id="inputGroup-sizing-sm">g/1只</span>
             <span class="input-group-text ic_2" id="inputGroup-sizing-sm">等於</span>
             <input type="number" inputmode="decimal" id="單位重kg" class="form-control no-input" min="0" readonly>
@@ -209,7 +214,7 @@
         <!-- 線材價格 -->
         <div class="input-group input-group-sm my-1">
             <span class="input-group-text ic_1" id="inputGroup-sizing-sm">線材價</span>
-            <input type="number" inputmode="decimal" id="線材價格" class="form-control" min="0" placeholder="輸入" aria-describedby="inputGroup-sizing-sm" oninput="換料價()">
+            <input type="number" inputmode="decimal" id="線材價格" class="form-control" min="0" placeholder="輸入" aria-describedby="inputGroup-sizing-sm" oninput="換料價()" onkeydown="moveToNextInput(event, '成型a')">
             <span class="input-group-text ic_1" id="inputGroup-sizing-sm">元/1kg</span>
             <span class="input-group-text ic_2" id="inputGroup-sizing-sm">1kg生產</span>
             <input type="number" inputmode="decimal" id="數量" class="form-control no-input" min="0" readonly>
@@ -237,7 +242,7 @@
         <!-- 成型 -->
         <div class="input-group input-group-sm my-1">
             <span class="input-group-text label-price" id="inputGroup-sizing-sm">成型</span>
-            <input type="number" inputmode="decimal" class="form-control custom-w" id="成型a" aria-describedby="inputGroup-sizing-sm" oninput="updateCalculation('成型')" min="0" placeholder="輸入">
+            <input type="number" inputmode="decimal" class="form-control custom-w" id="成型a" aria-describedby="inputGroup-sizing-sm" oninput="updateCalculation('成型')" min="0" placeholder="輸入" onkeydown="moveToNextInput(event, '車修a')">
             <span class="input-group-text label-unit">元</span>
             <input type="number" inputmode="decimal" class="form-control custom-s" id="成型b" value="1" min="0" oninput="updateCalculation('成型')">
             <select class="form-select form-select-sm" id="成型c" style="font-size: 12px;" onchange="updateCalculation('成型')">
@@ -251,7 +256,7 @@
         <!-- 車修 -->
         <div class="input-group input-group-sm my-1">
             <span class="input-group-text label-price" id="inputGroup-sizing-sm">車修</span>
-            <input type="number" inputmode="decimal" class="form-control custom-w" id="車修a" aria-describedby="inputGroup-sizing-sm" oninput="updateCalculation('車修')" min="0" placeholder="輸入">
+            <input type="number" inputmode="decimal" class="form-control custom-w" id="車修a" aria-describedby="inputGroup-sizing-sm" oninput="updateCalculation('車修')" min="0" placeholder="輸入" onkeydown="moveToNextInput(event, '攻牙a')">
             <span class="input-group-text label-unit">元</span>
             <input type="number" inputmode="decimal" class="form-control custom-s" id="車修b" value="1" min="0" oninput="updateCalculation('車修')">
             <select class="form-select form-select-sm" id="車修c" style="font-size: 12px;" onchange="updateCalculation('車修')">
@@ -265,7 +270,7 @@
         <!-- 攻牙 -->
         <div class="input-group input-group-sm my-1">
             <span class="input-group-text label-price" id="inputGroup-sizing-sm">攻牙</span>
-            <input type="number" inputmode="decimal" class="form-control custom-w" id="攻牙a" aria-describedby="inputGroup-sizing-sm" oninput="updateCalculation('攻牙')" min="0" placeholder="輸入">
+            <input type="number" inputmode="decimal" class="form-control custom-w" id="攻牙a" aria-describedby="inputGroup-sizing-sm" oninput="updateCalculation('攻牙')" min="0" placeholder="輸入" onkeydown="moveToNextInput(event, '搓牙a')">
             <span class="input-group-text label-unit">元</span>
             <input type="number" inputmode="decimal" class="form-control custom-s" id="攻牙b" value="1" min="0" oninput="updateCalculation('攻牙')">
             <select class="form-select form-select-sm" id="攻牙c" style="font-size: 12px;" onchange="updateCalculation('攻牙')">
@@ -279,7 +284,7 @@
         <!-- 搓牙 -->
         <div class="input-group input-group-sm my-1">
             <span class="input-group-text label-price" id="inputGroup-sizing-sm">搓牙</span>
-            <input type="number" inputmode="decimal" class="form-control custom-w" id="搓牙a" aria-describedby="inputGroup-sizing-sm" oninput="updateCalculation('搓牙')" min="0" placeholder="輸入">
+            <input type="number" inputmode="decimal" class="form-control custom-w" id="搓牙a" aria-describedby="inputGroup-sizing-sm" oninput="updateCalculation('搓牙')" min="0" placeholder="輸入" onkeydown="moveToNextInput(event, '輾齒a')">
             <span class="input-group-text label-unit">元</span>
             <input type="number" inputmode="decimal" class="form-control custom-s" id="搓牙b" value="1" min="0" oninput="updateCalculation('搓牙')">
             <select class="form-select form-select-sm" id="搓牙c" style="font-size: 12px;" onchange="updateCalculation('搓牙')">
@@ -293,7 +298,7 @@
         <!-- 輾齒 -->
         <div class="input-group input-group-sm my-1">
             <span class="input-group-text label-price" id="inputGroup-sizing-sm">輾齒</span>
-            <input type="number" inputmode="decimal" class="form-control custom-w" id="輾齒a" aria-describedby="inputGroup-sizing-sm" oninput="updateCalculation('輾齒')" min="0" placeholder="輸入">
+            <input type="number" inputmode="decimal" class="form-control custom-w" id="輾齒a" aria-describedby="inputGroup-sizing-sm" oninput="updateCalculation('輾齒')" min="0" placeholder="輸入" onkeydown="moveToNextInput(event, '銑削a')">
             <span class="input-group-text label-unit">元</span>
             <input type="number" inputmode="decimal" class="form-control custom-s" id="輾齒b" value="1" min="0" oninput="updateCalculation('輾齒')">
             <select class="form-select form-select-sm" id="輾齒c" style="font-size: 12px;" onchange="updateCalculation('輾齒')">
@@ -307,7 +312,7 @@
         <!-- 銑削 -->
         <div class="input-group input-group-sm my-1">
             <span class="input-group-text label-price" id="inputGroup-sizing-sm">銑削</span>
-            <input type="number" inputmode="decimal" class="form-control custom-w" id="銑削a" aria-describedby="inputGroup-sizing-sm" oninput="updateCalculation('銑削')" min="0" placeholder="輸入">
+            <input type="number" inputmode="decimal" class="form-control custom-w" id="銑削a" aria-describedby="inputGroup-sizing-sm" oninput="updateCalculation('銑削')" min="0" placeholder="輸入" onkeydown="moveToNextInput(event, '熱處理a')">
             <span class="input-group-text label-unit">元</span>
             <input type="number" inputmode="decimal" class="form-control custom-s" id="銑削b" value="1" min="0" oninput="updateCalculation('銑削')">
             <select class="form-select form-select-sm" id="銑削c" style="font-size: 12px;" onchange="updateCalculation('銑削')">
@@ -321,7 +326,7 @@
         <!-- 熱處理 -->
         <div class="input-group input-group-sm my-1">
             <span class="input-group-text label-price" id="inputGroup-sizing-sm">熱處理</span>
-            <input type="number" inputmode="decimal" class="form-control custom-w" id="熱處理a" aria-describedby="inputGroup-sizing-sm" oninput="updateCalculation('熱處理')" min="0" placeholder="輸入">
+            <input type="number" inputmode="decimal" class="form-control custom-w" id="熱處理a" aria-describedby="inputGroup-sizing-sm" oninput="updateCalculation('熱處理')" min="0" placeholder="輸入" onkeydown="moveToNextInput(event, '電鍍a')">
             <span class="input-group-text label-unit">元</span>
             <input type="number" inputmode="decimal" class="form-control custom-s" id="熱處理b" value="1" min="0" oninput="updateCalculation('熱處理')">
             <select class="form-select form-select-sm" id="熱處理c" style="font-size: 12px;" onchange="updateCalculation('熱處理')">
@@ -335,7 +340,7 @@
         <!-- 電鍍 -->
         <div class="input-group input-group-sm my-1">
             <span class="input-group-text label-price" id="inputGroup-sizing-sm">電鍍</span>
-            <input type="number" inputmode="decimal" class="form-control custom-w" id="電鍍a" aria-describedby="inputGroup-sizing-sm" oninput="updateCalculation('電鍍')" min="0" placeholder="輸入">
+            <input type="number" inputmode="decimal" class="form-control custom-w" id="電鍍a" aria-describedby="inputGroup-sizing-sm" oninput="updateCalculation('電鍍')" min="0" placeholder="輸入" onkeydown="moveToNextInput(event, '耐落a')">
             <span class="input-group-text label-unit">元</span>
             <input type="number" inputmode="decimal" class="form-control custom-s" id="電鍍b" value="1" min="0" oninput="updateCalculation('電鍍')">
             <select class="form-select form-select-sm" id="電鍍c" style="font-size: 12px;" onchange="updateCalculation('電鍍')">
@@ -349,7 +354,7 @@
         <!-- 耐落 -->
         <div class="input-group input-group-sm my-1">
             <span class="input-group-text label-price" id="inputGroup-sizing-sm">耐落</span>
-            <input type="number" inputmode="decimal" class="form-control custom-w" id="耐落a" aria-describedby="inputGroup-sizing-sm" oninput="updateCalculation('耐落')" min="0" placeholder="輸入">
+            <input type="number" inputmode="decimal" class="form-control custom-w" id="耐落a" aria-describedby="inputGroup-sizing-sm" oninput="updateCalculation('耐落')" min="0" placeholder="輸入" onkeydown="moveToNextInput(event, '清洗a')">
             <span class="input-group-text label-unit">元</span>
             <input type="number" inputmode="decimal" class="form-control custom-s" id="耐落b" value="1" min="0" oninput="updateCalculation('耐落')">
             <select class="form-select form-select-sm" id="耐落c" style="font-size: 12px;" onchange="updateCalculation('耐落')">
@@ -363,7 +368,7 @@
         <!-- 清洗 -->
         <div class="input-group input-group-sm my-1">
             <span class="input-group-text label-price" id="inputGroup-sizing-sm">清洗</span>
-            <input type="number" inputmode="decimal" class="form-control custom-w" id="清洗a" aria-describedby="inputGroup-sizing-sm" oninput="updateCalculation('清洗')" min="0" placeholder="輸入">
+            <input type="number" inputmode="decimal" class="form-control custom-w" id="清洗a" aria-describedby="inputGroup-sizing-sm" oninput="updateCalculation('清洗')" min="0" placeholder="輸入" onkeydown="moveToNextInput(event, '篩選a')">
             <span class="input-group-text label-unit">元</span>
             <input type="number" inputmode="decimal" class="form-control custom-s" id="清洗b" value="1" min="0" oninput="updateCalculation('清洗')">
             <select class="form-select form-select-sm" id="清洗c" style="font-size: 12px;" onchange="updateCalculation('清洗')">
@@ -377,7 +382,7 @@
         <!-- 篩選 -->
         <div class="input-group input-group-sm my-1">
             <span class="input-group-text label-price" id="inputGroup-sizing-sm">篩選</span>
-            <input type="number" inputmode="decimal" class="form-control custom-w" id="篩選a" aria-describedby="inputGroup-sizing-sm" oninput="updateCalculation('篩選')" min="0" placeholder="輸入">
+            <input type="number" inputmode="decimal" class="form-control custom-w" id="篩選a" aria-describedby="inputGroup-sizing-sm" oninput="updateCalculation('篩選')" min="0" placeholder="輸入" onkeydown="moveToNextInput(event, '包裝a')">
             <span class="input-group-text label-unit">元</span>
             <input type="number" inputmode="decimal" class="form-control custom-s" id="篩選b" value="1" min="0" oninput="updateCalculation('篩選')">
             <select class="form-select form-select-sm" id="篩選c" style="font-size: 12px;" onchange="updateCalculation('篩選')">
@@ -391,7 +396,7 @@
         <!-- 包裝 -->
         <div class="input-group input-group-sm my-1">
             <span class="input-group-text label-price" id="inputGroup-sizing-sm">包裝</span>
-            <input type="number" inputmode="decimal" class="form-control custom-w" id="包裝a" aria-describedby="inputGroup-sizing-sm" oninput="updateCalculation('包裝')" min="0" placeholder="輸入">
+            <input type="number" inputmode="decimal" class="form-control custom-w" id="包裝a" aria-describedby="inputGroup-sizing-sm" oninput="updateCalculation('包裝')" min="0" placeholder="輸入" onkeydown="moveToNextInput(event, '總計')">
             <span class="input-group-text label-unit">元</span>
             <input type="number" inputmode="decimal" class="form-control custom-s" id="包裝b" value="1" min="0" oninput="updateCalculation('包裝')">
             <select class="form-select form-select-sm" id="包裝c" style="font-size: 12px;" onchange="updateCalculation('包裝')">
@@ -405,7 +410,7 @@
         <hr>
 
         <!-- 總計 -->
-        <div class="input-group input-group-sm my-1">
+        <div class="input-group input-group-sm my-1 mb-5">
             <span class="input-group-text label-totle" id="inputGroup-sizing-sm">總計</span>
             <input type="number" class="form-control input-totle" id="總計" aria-describedby="inputGroup-sizing-sm" readonly>
             <span class="input-group-text label-totle">元/1只</span>
@@ -530,10 +535,28 @@
             });
             // 更新總和
             計算總合();
+            
+        }
+        // 在頁面加載完成後設置焦點
+        window.onload = function() {
+            focusToFirstInput();
         }
 
         function resetPage() {
             window.location.reload();  // 重新加載頁面
+        }
+
+        //enter後移到下一個input
+        function moveToNextInput(event, nextInputId) {
+            // Check if Enter key (keyCode 13) is pressed
+            if (event.keyCode === 13) {
+                // Move focus to the next input element by its ID
+                document.getElementById(nextInputId).focus();
+            }
+        }
+        //跳到第一個input
+        function focusToFirstInput() {
+            document.getElementById('單位重g').focus();
         }
 
 
