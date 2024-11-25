@@ -168,13 +168,12 @@
             width: 20% !important;
         }
 
-        .select-custom {
-            -webkit-appearance: none !important;
-            -moz-appearance: none !important;
-            appearance: none !important;
-
-            padding-right: 5% !important;  /* 給箭頭留出空間 */
-
+        .form-select {
+            -webkit-appearance: none ;
+            -moz-appearance: none ;
+            appearance: none ;
+            background: none;
+            padding-right: 0% !important;  /* 給箭頭留出空間 */
         }
 
 
@@ -217,7 +216,7 @@
             <input type="number" class="form-control no-input custom-w" id="料價a" aria-describedby="inputGroup-sizing-sm" readonly>
             <span class="input-group-text label-unit">元</span>
             <input type="number" class="form-control custom-s" id="料價b" value="1" min="0" oninput="換料價()">
-            <select class="form-select form-select-sm select-custom" id="料價c" style="font-size: 12px;" onchange="換料價()">
+            <select class="form-select form-select-sm" id="料價c" style="font-size: 12px;" onchange="換料價()">
                 <option value="1">只</option>
                 <option value="2">KG</option>
             </select>
