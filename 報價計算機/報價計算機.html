@@ -399,7 +399,7 @@
             <span class="input-group-text label-totle" id="inputGroup-sizing-sm">總計</span>
             <input type="number" class="form-control input-totle" id="總計" aria-describedby="inputGroup-sizing-sm" readonly>
             <span class="input-group-text label-totle">元/1只</span>
-            <button type="button" class="btn btn-warning" id="歸零" onclick="歸零()">
+            <button type="button" class="btn btn-warning" id="歸零" onclick="resetPage()">
                 歸零
             </button>
         </div>
@@ -522,6 +522,9 @@
             計算總合();
         }
 
+        function resetPage() {
+            window.location.reload();  // 重新加載頁面
+        }
 
 
     </script>
