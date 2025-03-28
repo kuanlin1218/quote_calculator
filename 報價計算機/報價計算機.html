@@ -226,6 +226,13 @@
             詮栩報價計算機
         </h4>
         
+         <!-- 重量kg/M -->
+         <!-- <div class="input-group input-group-sm my-1">
+            <span class="input-group-text ic_0" id="inputGroup-sizing-sm">重量(kg/M)</span>
+            <input type="number" inputmode="decimal" id="重量" class="form-control" min="0" placeholder="輸入" aria-describedby="inputGroup-sizing-sm" oninput="單位重換算()" onkeydown="moveToNextInput(event, '線材價格')">
+            <span class="input-group-text ic_0" id="inputGroup-sizing-sm">kg/1000只</span>
+        </div> -->
+
         <!-- 單位重 -->
         <div class="input-group input-group-sm my-1">
             <span class="input-group-text ic_1" id="inputGroup-sizing-sm">單位重</span>
@@ -509,6 +516,7 @@
             const b = parseFloat(document.getElementById(`${module}b`)?.value || 0);
             const c = document.getElementById(`${module}c`)?.value;
             const n = parseFloat(document.getElementById('數量')?.value || 0);
+            var kk = parseFloat(document.getElementById('單位重kg').value) || 0;
 
             let ans = 0;
 
@@ -518,7 +526,8 @@
                 if (c === "1") {
                     ans = a / b;
                 } else if (c === "2") {
-                    ans = a / n;
+                    //ans = a / n;
+                    ans = (a / b)*kk;
                 }
                 //console.log(`計算結果: ${ans}`);
                 document.getElementById(`${module}d`).value = ans.toFixed(2);
